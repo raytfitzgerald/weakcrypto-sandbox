@@ -1,0 +1,25 @@
+{
+  "name": "weakcrypto",
+  "private": true,
+  "type": "module",
+  "description": "Weak cryptography in public code: a queue of repositories, the CBOMs people submit for them, and a benchmark of how well models find it.",
+  "scripts": {
+    "add": "bun add.ts",
+    "stamp": "bun stamp.ts",
+    "check": "bun check.ts",
+    "benchmark": "bun benchmark/run.ts",
+    "report": "bun benchmark/report.ts",
+    "typecheck": "tsc --noEmit -p ."
+  },
+  "devDependencies": {
+    "@types/bun": "^1.3.14",
+    "typescript": "^5.6.3"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.133.0",
+    "@cyclonedx/cyclonedx-library": "^10.3.0",
+    "ajv": "^8.20.0",
+    "ajv-formats": "^3.0.1",
+    "ajv-formats-draft2019": "^1.6.1"
+  }
+}

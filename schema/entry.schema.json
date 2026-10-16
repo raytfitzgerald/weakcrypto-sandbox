@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/qernelkit/weakcrypto/schema/entry.schema.json",
+  "title": "An entry in the queue",
+  "description": "One repository to scan. Every entry has this shape, however it got here: a repository someone adds (repos/<owner>/<repo>/repo.json, one file each) and a repository from the list of everything on GitHub with 100 or more stars (seed/<first character of the owner>.jsonl, one entry per line, sorted by repo). check.ts holds both to it.",
+  "type": "object",
+  "required": [
+    "repo",
+    "url",
+    "stars",
+    "addedBy",
+    "addedAt",
+    "via"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "repo": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+/[a-z0-9._-]+$",
+      "description": "owner/name, lowercased: the entry's identity."
+    },
+    "url": {
+      "type": "string",
+      "pattern": "^https://github\\.com/[A-Za-z0-9-]+/[A-Za-z0-9._-]+$",
+      "description": "The repository on GitHub, as GitHub spells it."
+    },
+    "stars": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0,
+      "description": "Its stars when it was added; null if they were not looked up."
+    },
+    "addedBy": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9-]{1,39}(\\[bot\\])?$",
+      "description": "The GitHub account that added it: the author of the commit that adds the entry. A GitHub App's login ends in [bot]."
+    },
+    "addedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "via": {
+      "type": "string",
+      "enum": [
+        "site",
+        "pull-request",
+        "corpus"
+      ],
+      "description": "How it got here: the Add box on the site, a pull request written by hand, or the list of repositories with 100 or more stars."
+    },
+    "commit": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$",
+      "description": "The commit to scan, when it is pinned. Without one, the scan pins the head of the default branch and records it."
+    },
+    "justification": {
+      "type": "string",
+      "maxLength": 500,
+      "description": "Optional: why it belongs."
+    },
+    "schema": {
+      "const": "weakcrypto.target/v1",
+      "description": "Deprecated: the first entries carry it. New ones leave it out."
+    }
+  }
+}

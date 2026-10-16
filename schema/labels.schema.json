@@ -1,0 +1,107 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/qernelkit/weakcrypto/schema/labels.schema.json",
+  "title": "The answer key for one repository at one commit",
+  "description": "benchmark/keys/<owner>/<repo>.json: the benchmark's answer key for a repository at one commit. Every site in it was settled by review.",
+  "type": "object",
+  "required": [
+    "schema",
+    "repo",
+    "commit",
+    "sites"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema": {
+      "const": "weakcrypto.labels/v1"
+    },
+    "repo": {
+      "type": "string"
+    },
+    "commit": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "sites": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "file",
+          "line",
+          "verdict",
+          "by",
+          "claimedBy"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "file": {
+            "type": "string"
+          },
+          "line": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "verdict": {
+            "enum": [
+              "confirmed",
+              "rejected",
+              "pending"
+            ]
+          },
+          "by": {
+            "type": "string",
+            "description": "consensus, review:<github login>, judge:<model>, or check (failed verification)."
+          },
+          "primitive": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "algorithm": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "quantumVulnerable": {
+            "type": [
+              "boolean",
+              "null"
+            ]
+          },
+          "claimedBy": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Submission ids that reported the site."
+          },
+          "rejectedBy": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Submission ids that looked and said no."
+          },
+          "firstClaim": {
+            "type": "string",
+            "description": "The id of the earliest CBOM to report it."
+          },
+          "note": {
+            "type": "string"
+          },
+          "foundBy": {
+            "type": "string",
+            "description": "The GitHub account that submitted that CBOM: who found it."
+          }
+        }
+      }
+    }
+  }
+}
