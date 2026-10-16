@@ -1,0 +1,179 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:fb679cc1-7102-4f5b-b8b0-3478fbf1ec33",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-14T18:36:33.074Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "bbcd802706e4"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "hku-mars/btc_descriptor",
+      "version": "742af157036144edad9a8350330c0158ea1a40d5",
+      "bom-ref": "repo:hku-mars/btc_descriptor@742af157036144edad9a8350330c0158ea1a40d5",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/hku-mars/btc_descriptor"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "3c05ff85-d5cd-49ab-95b5-22a9be3001a3"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "raytfitzgerald"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "4"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "MD5",
+      "bom-ref": "pqs:finding:include/CustomMsg.h:146:MD5",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "include/CustomMsg.h",
+            "line": 146
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "include/CustomMsg.h:146=0d13a88e00c9e12d"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "MD5",
+      "bom-ref": "pqs:finding:include/CustomPoint.h:147:MD5",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "include/CustomPoint.h",
+            "line": 147
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "include/CustomPoint.h:147=396435332d737cd6"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "MD5",
+      "bom-ref": "pqs:finding:include/CustomMsg.h:146,142:MD5",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash",
+          "parameterSetIdentifier": "128"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "include/CustomMsg.h",
+            "line": 146
+          },
+          {
+            "location": "include/CustomMsg.h",
+            "line": 142
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "include/CustomMsg.h:146=0d13a88e00c9e12d"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "include/CustomMsg.h:142=a9bbaaf059bc5b9b"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "MD5",
+      "bom-ref": "pqs:finding:include/CustomPoint.h:147,143:MD5",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash",
+          "parameterSetIdentifier": "128"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "include/CustomPoint.h",
+            "line": 147
+          },
+          {
+            "location": "include/CustomPoint.h",
+            "line": 143
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "include/CustomPoint.h:147=396435332d737cd6"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "include/CustomPoint.h:143=e4b7e40d9c1df662"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:finding:include/CustomMsg.h:146:MD5"
+    },
+    {
+      "ref": "pqs:finding:include/CustomPoint.h:147:MD5"
+    },
+    {
+      "ref": "pqs:finding:include/CustomMsg.h:146,142:MD5"
+    },
+    {
+      "ref": "pqs:finding:include/CustomPoint.h:147,143:MD5"
+    }
+  ]
+}
